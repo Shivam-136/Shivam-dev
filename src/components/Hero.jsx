@@ -3,12 +3,13 @@ import gsap from "gsap";
 import { profile } from "../data/profile";
 import { FiDownload, FiArrowRight, FiMail } from "react-icons/fi";
 import MinecraftBlock3D from "./MinecraftBlock3D";
+import { smoothScrollTo } from "../utils/scroll";
 
-  const ROLES = [
-    "Full Stack Developer",
-    "React & Node.js Engineer",
-    "AI-Powered App Builder",
-  ];
+const ROLES = [
+  "Full Stack Developer",
+  "React & Node.js Engineer",
+  "AI-Powered App Builder",
+];
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -142,16 +143,40 @@ export default function Hero() {
           <a href={profile.resumeUrl} download data-cursor-hover className="hero-cta mc-btn flex items-center gap-2 bg-emerald-glow text-obsidian font-medium px-6 py-3">
             <FiDownload /> Download Resume
           </a>
-          <a href="#projects" data-cursor-hover className="hero-cta mc-btn glass flex items-center gap-2 text-bone px-6 py-3">
+          <a
+            href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              smoothScrollTo("#projects");
+            }}
+            data-cursor-hover
+            className="hero-cta mc-btn glass flex items-center gap-2 text-bone px-6 py-3"
+          >
             View Projects <FiArrowRight />
           </a>
-          <a href="#contact" data-cursor-hover className="hero-cta mc-btn flex items-center gap-2 bg-obsidian-alt text-bone-dim hover:text-bone px-6 py-3">
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              smoothScrollTo("#contact");
+            }}
+            data-cursor-hover
+            className="hero-cta mc-btn flex items-center gap-2 bg-obsidian-alt text-bone-dim hover:text-bone px-6 py-3"
+          >
             <FiMail /> Hire Me
           </a>
         </div>
       </div>
 
-      <a href="#about" data-cursor-hover className="absolute bottom-8 left-1/2 -translate-x-1/2 text-bone-dim flex flex-col items-center gap-2 text-xs">
+      <a
+        href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          smoothScrollTo("#about");
+        }}
+        data-cursor-hover
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-bone-dim flex flex-col items-center gap-2 text-xs"
+      >
         <span className="eyebrow !text-[9px]">SCROLL</span>
         <span className="w-[2px] h-10 bg-emerald-glow" />
       </a>

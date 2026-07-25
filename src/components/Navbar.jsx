@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { navLinks } from "../data/profile";
 import { FiCommand, FiVolume2, FiVolumeX } from "react-icons/fi";
 import { isMuted, toggleMuted, onMuteChange } from "../utils/sound";
+import { smoothScrollTo } from "../utils/scroll";
 
 export default function Navbar({ onOpenPalette }) {
   const [scrolled, setScrolled] = useState(false);
@@ -40,15 +41,23 @@ export default function Navbar({ onOpenPalette }) {
           scrolled ? "mt-3 glass rounded-2xl py-3 shadow-panel" : "py-5"
         }`}
       >
-       <h1 className="font-bold tracking-tight">
-  <span className="text-bone">Shivam</span>
-  <span className="text-emerald-glow">.dev</span>
-</h1>
+        <h1 className="font-bold tracking-tight">
+          <span className="text-bone">Shivam</span>
+          <span className="text-emerald-glow">.dev</span>
+        </h1>
 
         <ul className="hidden md:flex items-center gap-7 text-sm text-bone-dim font-body">
           {navLinks.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="hover:text-diamond transition-colors" data-cursor-hover>
+              <a
+                href={l.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo(l.href);
+                }}
+                className="hover:text-diamond transition-colors"
+                data-cursor-hover
+              >
                 {l.label}
               </a>
             </li>

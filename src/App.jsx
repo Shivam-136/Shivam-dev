@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
-import Loader from "./components/Loader";
+import LoginScreen from "./components/LoginScreen";
 import CustomCursor from "./components/CustomCursor";
-import CursorAura from "./components/CursorAura";   // ✅ add
+import CursorAura from "./components/CursorAura";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -17,13 +16,16 @@ import Statistics from "./components/Statistics";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CommandPalette from "./components/CommandPalette";
-import GlobalClickSound from "./components/GlobalClickSound"; // ✅ add
+import GlobalClickSound from "./components/GlobalClickSound";
+import useSmoothScroll from "./hooks/useSmoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [paletteOpen, setPaletteOpen] = useState(false);
+
+  useSmoothScroll();
 
   useEffect(() => {
     const onKey = (e) => {
@@ -42,13 +44,12 @@ export default function App() {
 
   return (
     <>
-      {loading && <Loader onDone={() => setLoading(false)} />}
+      {loading && <LoginScreen onDone={() => setLoading(false)} />}
 
       <CustomCursor />
-      <CursorAura />   {/* ✅ now covers the entire site, all sections */}
+      <CursorAura />
 
-      <GlobalClickSound /> {/* ✅ plays click sound on any button/link, site-wide */}
-      {/* Sound toggle is now inside Navbar — no floating button needed */}
+      <GlobalClickSound />
 
       <Navbar onOpenPalette={() => setPaletteOpen(true)} />
 

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { navLinks, profile } from "../data/profile";
+import { smoothScrollTo } from "../utils/scroll";
 
 const commands = [
-  ...navLinks.map((l) => ({ label: `Go to ${l.label}`, action: () => scrollTo(l.href) })),
+  ...navLinks.map((l) => ({ label: `Go to ${l.label}`, action: () => smoothScrollTo(l.href) })),
   { label: "Open GitHub", action: () => window.open(profile.github, "_blank") },
   { label: "Download Resume", action: () => window.open(profile.resumeUrl, "_blank") },
 ];
-
-function scrollTo(href) {
-  document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-}
 
 export default function CommandPalette({ open, onClose }) {
   const [query, setQuery] = useState("");

@@ -1,5 +1,6 @@
 import { navLinks, profile } from "../data/profile";
 import { FiArrowUp, FiGithub } from "react-icons/fi";
+import { smoothScrollTo } from "../utils/scroll";
 
 export default function Footer() {
   return (
@@ -26,6 +27,10 @@ export default function Footer() {
             <li key={link.href}>
               <a
                 href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo(link.href);
+                }}
                 data-cursor-hover
                 className="hover:text-diamond transition-colors"
               >
@@ -49,6 +54,10 @@ export default function Footer() {
 
           <a
             href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              smoothScrollTo("#hero");
+            }}
             data-cursor-hover
             aria-label="Back to top"
             className="w-10 h-10 flex items-center justify-center glass rounded-xl text-bone-dim hover:text-emerald-glow transition-colors"
