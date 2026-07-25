@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { profile } from "../data/profile";
 import { FiDownload, FiArrowRight, FiMail } from "react-icons/fi";
+import MinecraftBlock3D from "./MinecraftBlock3D";
 
   const ROLES = [
     "Full Stack Developer",
@@ -28,7 +29,8 @@ export default function Hero() {
           stagger: 0.06,
           duration: 0.6,
           ease: "steps(6)",
-        }, "-=0.6");
+        }, "-=0.6")
+        .from(".hero-3d-block", { opacity: 0, scale: 0.7, duration: 0.7, ease: "back.out(1.7)" }, "-=0.4");
     }, heroRef);
     return () => ctx.revert();
   }, []);
@@ -108,11 +110,18 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* floating Minecraft blocks */}
+      {/* floating Minecraft blocks (CSS) */}
       <FloatingBlock refCb={(el) => (layersRef.current[1] = el)} depth="1.2" className="left-[8%] top-[28%]" size={64} type="grass" />
       <FloatingBlock refCb={(el) => (layersRef.current[2] = el)} depth="0.8" className="right-[10%] top-[55%]" size={44} type="dirt" />
       <FloatingBlock refCb={(el) => (layersRef.current[3] = el)} depth="1.5" className="left-[16%] bottom-[16%]" size={36} type="stone" />
       <FloatingBlock refCb={(el) => (layersRef.current[4] = el)} depth="1" className="right-[20%] bottom-[22%]" size={28} type="diamond" />
+
+      {/* real rotating 3D Minecraft block (Three.js) — large screens only */}
+      <div
+        className="hero-3d-block hidden lg:block absolute right-[6%] top-1/2 -translate-y-1/2 w-72 h-72 pointer-events-none z-0 opacity-90"
+      >
+        <MinecraftBlock3D className="w-full h-full" />
+      </div>
 
       <div className="relative z-10 max-w-4xl text-center px-6">
         <p className="hero-eyebrow eyebrow mb-6">FULL STACK DEVELOPER</p>
