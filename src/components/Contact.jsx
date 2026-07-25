@@ -3,11 +3,20 @@ import emailjs from "@emailjs/browser";
 import useChunkReveal from "../hooks/useChunkReveal";
 import useSlideReveal from "../hooks/useSlideReveal";
 import { profile } from "../data/profile";
-import { FiGithub, FiLinkedin, FiInstagram, FiSend } from "react-icons/fi";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FiSend } from "react-icons/fi";
 
 const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
 const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
 const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
+// If you haven't set up EmailJS yet, the form will show a "use email
+// directly" fallback instead of silently failing.
+const EMAILJS_CONFIGURED =
+  !EMAILJS_SERVICE_ID.startsWith("YOUR_") &&
+  !EMAILJS_TEMPLATE_ID.startsWith("YOUR_") &&
+  !EMAILJS_PUBLIC_KEY.startsWith("YOUR_");
 
 const initialForm = { name: "", email: "", subject: "", message: "" };
 
@@ -31,6 +40,12 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (!validate()) return;
+
+    if (!EMAILJS_CONFIGURED) {
+      setStatus("not-configured");
+      return;
+    }
+
     setStatus("sending");
     try {
       await emailjs.send(
@@ -46,6 +61,16 @@ export default function Contact() {
       setStatus("error");
     }
   }
+
+  const mailtoHref = profile.email
+    ? `mailto:${profile.email}${
+        form.subject || form.message
+          ? `?subject=${encodeURIComponent(form.subject || "Portfolio contact")}&body=${encodeURIComponent(
+              form.message ? `${form.message}\n\n— ${form.name || ""} (${form.email || ""})` : ""
+            )}`
+          : ""
+      }`
+    : null;
 
   return (
     <section id="contact" className="py-28 px-6 bg-obsidian-panel/40">
@@ -93,15 +118,44 @@ export default function Contact() {
             )}
             {status === "error" && (
               <p className="text-redstone text-sm text-center">
-                Something went wrong. Add your EmailJS keys in Contact.jsx, then try again.
+                Something went wrong sending the message. Try the direct email link below instead.
               </p>
+            )}
+            {status === "not-configured" && (
+              <div className="text-center space-y-2">
+                <p className="text-bone-dim text-sm">
+                  This form isn't wired up yet — but you can reach me directly:
+                </p>
+                {mailtoHref ? (
+                  <a
+                    href={mailtoHref}
+                    data-cursor-hover
+                    className="inline-flex items-center gap-2 text-emerald-glow text-sm font-medium hover:underline"
+                  >
+                    <MdEmail /> {profile.email}
+                  </a>
+                ) : (
+                  <p className="text-bone-dim/60 text-xs italic">
+                    (Add your email to profile.js to enable a direct contact link.)
+                  </p>
+                )}
+              </div>
             )}
           </form>
 
           <div data-slide-item data-slide-dir="right" className="flex items-center justify-center gap-5 mt-8">
-            {profile.github && <SocialIcon href={profile.github} icon={FiGithub} label="GitHub" />}
-            {profile.linkedin && <SocialIcon href={profile.linkedin} icon={FiLinkedin} label="LinkedIn" />}
-            {profile.instagram && <SocialIcon href={profile.instagram} icon={FiInstagram} label="Instagram" />}
+            {profile.email && (
+              <SocialSlot href={`mailto:${profile.email}`} icon={MdEmail} label="Email" color="#5EEAD4" />
+            )}
+            {profile.github && (
+              <SocialSlot href={profile.github} icon={FaGithub} label="GitHub" color="#ffffff" />
+            )}
+            {profile.linkedin && (
+              <SocialSlot href={profile.linkedin} icon={FaLinkedin} label="LinkedIn" color="#0A66C2" />
+            )}
+            {profile.instagram && (
+              <SocialSlot href={profile.instagram} icon={FaInstagram} label="Instagram" color="#E1306C" />
+            )}
           </div>
         </div>
       </div>
@@ -128,17 +182,22 @@ function Field({ label, value, onChange, error, type = "text", textarea = false 
   );
 }
 
-function SocialIcon({ href, icon: Icon, label }) {
+// Minecraft "inventory slot" styled social icon — real brand logo (react-icons/si)
+// inside a blocky, hard-edged slot with the brand's actual color, matching the
+// same bevel/press language as .mc-btn used elsewhere on the site.
+function SocialSlot({ href, icon: Icon, label, color }) {
+  const isMailto = href.startsWith("mailto:");
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noreferrer"
+      target={isMailto ? undefined : "_blank"}
+      rel={isMailto ? undefined : "noreferrer"}
       aria-label={label}
+      title={label}
       data-cursor-hover
-      className="w-11 h-11 flex items-center justify-center glass pixel-border rounded-xl text-bone-dim hover:text-diamond transition-all hover:scale-110"
+      className="mc-btn w-12 h-12 flex items-center justify-center bg-obsidian-alt transition-transform hover:scale-110"
     >
-      <Icon size={18} />
+      <Icon size={20} style={{ color }} />
     </a>
   );
 }

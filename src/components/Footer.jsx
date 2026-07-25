@@ -72,10 +72,6 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.name}. Built block by block.
         </p>
-
-        <p>
-          Made with ❤️ using React, GSAP & Tailwind CSS
-        </p>
       </div>
     </footer>
   );

@@ -1,25 +1,35 @@
 // src/utils/sound.js
 // Shared, app-wide sound engine + mute state.
 // No external audio file needed — the "click" is synthesized with Web Audio API.
+// Sound defaults to OFF (muted) until the user explicitly turns it on,
+// so first-time visitors in quiet/professional settings aren't surprised.
 
 const STORAGE_KEY = "mc-sound-muted";
 let audioCtx = null;
 let listeners = new Set();
 
 function getAudioCtx() {
+  if (typeof window === "undefined") return null;
+
   if (!audioCtx) {
     const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null; // Web Audio API not supported in this browser
     audioCtx = new Ctx();
   }
   return audioCtx;
 }
 
 export function isMuted() {
-  if (typeof window === "undefined") return false;
-  return window.localStorage.getItem(STORAGE_KEY) === "true";
+  if (typeof window === "undefined") return true;
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  // No stored preference yet → default to muted (opt-in sound, not opt-out).
+  if (stored === null) return true;
+  return stored === "true";
 }
 
 export function setMuted(next) {
+  if (typeof window === "undefined") return;
+
   window.localStorage.setItem(STORAGE_KEY, String(next));
   listeners.forEach((cb) => cb(next));
   if (!next) playBlockClick(); // confirmation blip when turning sound back ON
@@ -39,8 +49,11 @@ export function onMuteChange(callback) {
 
 export function playBlockClick() {
   if (isMuted()) return;
+
   try {
     const ctx = getAudioCtx();
+    if (!ctx) return; // unsupported browser — fail silently
+
     if (ctx.state === "suspended") ctx.resume();
 
     const now = ctx.currentTime;
@@ -65,4 +78,4 @@ export function playBlockClick() {
   } catch (e) {
     // audio blocked/unsupported — fail silently
   }
-}
+} 

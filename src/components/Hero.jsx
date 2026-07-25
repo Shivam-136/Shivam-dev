@@ -117,9 +117,11 @@ export default function Hero() {
       <FloatingBlock refCb={(el) => (layersRef.current[3] = el)} depth="1.5" className="left-[16%] bottom-[16%]" size={36} type="stone" />
       <FloatingBlock refCb={(el) => (layersRef.current[4] = el)} depth="1" className="right-[20%] bottom-[22%]" size={28} type="diamond" />
 
-      {/* real rotating 3D Minecraft block (Three.js) — large screens only */}
+      {/* real rotating 3D Minecraft block (Three.js) — now visible on all screen sizes.
+          Small + tucked near the top on mobile so it never overlaps the centered text;
+          grows and moves to the side as the viewport widens. */}
       <div
-        className="hero-3d-block hidden lg:block absolute right-[6%] top-1/2 -translate-y-1/2 w-72 h-72 pointer-events-none z-0 opacity-90"
+        className="hero-3d-block absolute right-[6%] top-6 sm:top-10 md:top-1/2 md:-translate-y-1/2 w-28 h-28 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 pointer-events-none z-0 opacity-90"
       >
         <MinecraftBlock3D className="w-full h-full" />
       </div>

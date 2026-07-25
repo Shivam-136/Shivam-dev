@@ -6,9 +6,9 @@ export const profile = {
     "I am a passionate Full Stack Developer specializing in React.js, Redux Toolkit, Tailwind CSS, GSAP, Node.js, Express.js, MongoDB, REST APIs, Authentication Systems, and AI-powered applications. I love building scalable web applications with beautiful UI, smooth animations, secure backend architecture, and excellent user experience.",
   github: "https://github.com/Shivam-136",
   githubUsername: "Shivam-136",
-  email: "", // fill in — used by the contact form and mailto fallback
-  linkedin: "", // fill in
-  instagram: "", // fill in
+  email: "shivam243028@gmail.com",
+  linkedin: "https://www.linkedin.com/in/shivam-chhanchaan-029665362",
+  instagram: "https://www.instagram.com/shivamk._13/",
   resumeUrl: "/resume.pdf", // drop your resume file into /public as resume.pdf
 };
 
@@ -27,6 +27,35 @@ export const featuredProject = {
   live: "https://nexa-voice-assistant-by-shivam.vercel.app/",
   repo: "https://github.com/Shivam-136",
 };
+
+// Multiple projects for the Projects grid. featuredProject above stays as-is
+// (used for the big hero card); add more real projects here so the section
+// shows a range of work instead of just one. Replace the two placeholder
+// entries with your own projects — fill in name, description, features,
+// tech, live link and repo link. Delete a placeholder entirely if you
+// don't have a second/third project ready yet; the grid adapts to however
+// many entries are in this array.
+export const projects = [
+  featuredProject,
+  {
+    name: "Add your second project",
+    description:
+      "Replace this with a real project description — what it does, what problem it solves, and what makes it worth looking at.",
+    features: ["Feature one", "Feature two", "Feature three"],
+    tech: ["React", "Node.js"],
+    live: "",
+    repo: "",
+  },
+  {
+    name: "Add your third project",
+    description:
+      "Replace this with a real project description — what it does, what problem it solves, and what makes it worth looking at.",
+    features: ["Feature one", "Feature two", "Feature three"],
+    tech: ["React", "Node.js"],
+    live: "",
+    repo: "",
+  },
+];
 
 export const skills = {
   frontend: [
