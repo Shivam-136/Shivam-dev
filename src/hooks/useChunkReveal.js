@@ -16,17 +16,13 @@ export default function useChunkReveal(options = {}) {
       return;
     }
 
-    const visibleClip = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
-    const hiddenClip =
-      "polygon(0 100%, 10% 100%, 10% 0, 20% 0, 20% 100%, 30% 100%, 30% 0, 40% 0, 40% 100%, 50% 100%, 50% 0, 60% 0, 60% 100%, 70% 100%, 70% 0, 80% 0, 80% 100%, 90% 100%, 90% 0, 100% 0, 100% 100%, 0 100%)";
+    const distance = options.distance || 60;
 
-    // Set the hidden state synchronously, before the browser paints —
-    // this is what removes the flash/glitch on first mount.
-    el.classList.add("chunk-reveal");
-    gsap.set(el, { opacity: 0, y: 24, clipPath: hiddenClip });
+    // Simple, clean entrance — no clip-path column tearing.
+    gsap.set(el, { opacity: 0, x: -distance });
 
     const items = el.querySelectorAll("[data-chunk-item]");
-    if (items.length) gsap.set(items, { opacity: 0, y: 18, scale: 0.96 });
+    if (items.length) gsap.set(items, { opacity: 0, x: -distance * 0.6 });
 
     let activeTl = null;
 
@@ -35,24 +31,23 @@ export default function useChunkReveal(options = {}) {
       el.classList.remove("chunk-revealed");
 
       activeTl = gsap.timeline();
-      activeTl
-        .to(el, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0)
-        .to(
-          el,
-          {
-            clipPath: visibleClip,
-            duration: 0.8,
-            ease: "power3.out", // smooth instead of stepped — removes the jerky wipe
-            onComplete: () => el.classList.add("chunk-revealed"),
-          },
-          0
-        );
+      activeTl.to(
+        el,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          onComplete: () => el.classList.add("chunk-revealed"),
+        },
+        0
+      );
 
       if (items.length) {
         activeTl.to(
           items,
-          { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: "power2.out" },
-          0.25
+          { opacity: 1, x: 0, duration: 0.6, stagger: 0.08, ease: "power2.out" },
+          0.15
         );
       }
     }
@@ -62,9 +57,9 @@ export default function useChunkReveal(options = {}) {
       el.classList.remove("chunk-revealed");
 
       activeTl = gsap.timeline();
-      activeTl.to(el, { opacity: 0, y: 24, clipPath: hiddenClip, duration: 0.4, ease: "power2.in" }, 0);
+      activeTl.to(el, { opacity: 0, x: -distance, duration: 0.4, ease: "power2.in" }, 0);
       if (items.length) {
-        activeTl.to(items, { opacity: 0, y: 18, scale: 0.96, duration: 0.3, ease: "power2.in" }, 0);
+        activeTl.to(items, { opacity: 0, x: -distance * 0.6, duration: 0.3, ease: "power2.in" }, 0);
       }
     }
 
@@ -81,7 +76,7 @@ export default function useChunkReveal(options = {}) {
       trigger.kill();
       if (activeTl) activeTl.kill();
     };
-  }, [options.start, options.end]);
+  }, [options.start, options.end, options.distance]);
 
   return ref;
 }
