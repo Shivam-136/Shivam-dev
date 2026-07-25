@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #34d399 transparent;
+}
+
+html,
+body {
+  background: #0a0d0b;
+  color: #ecf3ec;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  cursor: none;
+}
+
+@media (max-width: 768px),
+(hover: none) {
+  body {
+    cursor: auto;
+  }
+
+  .mc-cursor {
+    display: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Signature: Chunk-load reveal (voxel column wipe) ---------- */
+.chunk-reveal {
+  clip-path: polygon(0 100%, 10% 100%, 10% 0, 20% 0, 20% 100%,
+      30% 100%, 30% 0, 40% 0, 40% 100%,
+      50% 100%, 50% 0, 60% 0, 60% 100%,
+      70% 100%, 70% 0, 80% 0, 80% 100%,
+      90% 100%, 90% 0, 100% 0, 100% 100%,
+      0 100%);
+}
+
+.chunk-revealed {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* =====================================================================
+   MINECRAFT GUI PANEL SYSTEM
+   Real Minecraft inventory panels: flat stone-grey fill, a light bevel
+   on the top/left edge, a dark bevel on the bottom/right edge, and a
+   hard 2px black outline. No blur, no soft glow — everything is crisp.
+   ===================================================================== */
+.glass {
+  position: relative;
+  background: #1b2117;
+  border-radius: 2px;
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.06),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.55),
+    0 0 0 2px #000,
+    6px 6px 0 0 rgba(0, 0, 0, 0.65);
+}
+
+/* pixel-border: hairline emerald trim drawn as hard pixel notches,
+   not a blurred gradient ring */
+.pixel-border {
+  position: relative;
+  border-radius: 2px !important;
+}
+
+.pixel-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.45);
+  pointer-events: none;
+}
+
+.pixel-border::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: -1px;
+  left: -1px;
+  background: #34d399;
+  box-shadow: 6px 0 0 #34d399, 0 6px 0 #34d399;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* rounded-* utilities get overridden to blocky corners wherever the
+   panel system is used, so Tailwind's rounded-2xl/3xl on .glass elements
+   still reads as Minecraft, not iOS */
+.glass.rounded-xl,
+.glass.rounded-2xl,
+.glass.rounded-3xl {
+  border-radius: 3px;
+}
+
+.text-glow-emerald,
+.text-glow-diamond {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* =====================================================================
+   MINECRAFT BUTTON
+   Classic beveled GUI button: light top/left inset, dark bottom/right
+   inset, brightens (not lifts) on hover, and visibly presses in —
+   inverted bevel — on click.
+   ===================================================================== */
+.mc-btn {
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid #000;
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255, 255, 255, 0.25),
+    inset -2px -2px 0 0 rgba(0, 0, 0, 0.45),
+    4px 4px 0 0 rgba(0, 0, 0, 0.6);
+  transition: filter 0.1s steps(2), transform 0.05s linear, box-shadow 0.05s linear;
+}
+
+.mc-btn:hover {
+  filter: brightness(1.12);
+}
+
+.mc-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow:
+    inset -2px -2px 0 0 rgba(255, 255, 255, 0.2),
+    inset 2px 2px 0 0 rgba(0, 0, 0, 0.5),
+    1px 1px 0 0 rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Pixelated cursor: hard-edged crosshair, stepped motion ---------- */
+.mc-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.mc-cursor::before,
+.mc-cursor::after {
+  content: "";
+  position: absolute;
+  background: #ecf3ec;
+  box-shadow: 0 0 0 1px #000;
+}
+
+.mc-cursor::before {
+  width: 100%;
+  height: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mc-cursor::after {
+  height: 100%;
+  width: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mc-cursor.is-hovering {
+  width: 24px;
+  height: 24px;
+}
+
+.mc-cursor.is-hovering::before,
+.mc-cursor.is-hovering::after {
+  background: #34d399;
+}
+
+/* ---------- Marquee track (GSAP-driven, no CSS animation) ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ---------- Eyebrow pixel label ---------- */
+.eyebrow {
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #34d399;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* ---------- Subtle dirt/stone noise texture on section backgrounds ---------- */
+.mc-texture {
+  background-image: repeating-conic-gradient(rgba(255, 255, 255, 0.015) 0% 25%,
+      transparent 0% 50%);
+  background-size: 6px 6px;
+}
+
+::selection {
+  background: #34d399;
+  color: #0a0d0b;
+}
