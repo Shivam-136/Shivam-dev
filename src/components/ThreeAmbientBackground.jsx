@@ -21,15 +21,28 @@ export default function ThreeAmbientBackground() {
     if (!mount) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Respect data saver / low-end devices: skip entirely on very small
-    // viewports where the effect would barely be visible anyway.
+    // Only reduced-motion skips this entirely — small/mobile screens still
+    // get it, just with the FOV fix below and a lighter particle count.
     if (reduced) return;
 
     let width = window.innerWidth;
     let height = window.innerHeight;
 
+    // A fixed vertical FOV (like the old `45`) only shows a decent
+    // horizontal slice on wide desktop screens — on a narrow portrait
+    // phone, the horizontal FOV shrinks a lot and most shards (spread
+    // across x) fall outside the frustum entirely. Instead, derive the
+    // vertical FOV from the aspect so the *horizontal* field of view
+    // stays roughly constant across desktop and mobile.
+    const TARGET_HORIZONTAL_FOV_DEG = 62;
+    function fovForAspect(aspect) {
+      const hRad = THREE.MathUtils.degToRad(TARGET_HORIZONTAL_FOV_DEG);
+      const vRad = 2 * Math.atan(Math.tan(hRad / 2) / aspect);
+      return THREE.MathUtils.clamp(THREE.MathUtils.radToDeg(vRad), 35, 100);
+    }
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(fovForAspect(width / height), width / height, 0.1, 100);
     camera.position.z = 18;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -37,8 +50,13 @@ export default function ThreeAmbientBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
     mount.appendChild(renderer.domElement);
 
+    // Fewer, slightly smaller shards on small/low-power screens so
+    // mobile stays smooth — visibility comes from the FOV fix above,
+    // not from throwing more geometry at it.
+    const isSmallScreen = width < 640;
+
     const PALETTE = [0x34d399, 0x5eead4, 0xffffff, 0x5d8a3a];
-    const COUNT = 60;
+    const COUNT = isSmallScreen ? 36 : 60;
 
     // Bigger + additive-blended so the glow reads through the section
     // panels' translucent backgrounds instead of disappearing behind them.
@@ -128,16 +146,19 @@ export default function ThreeAmbientBackground() {
       width = window.innerWidth;
       height = window.innerHeight;
       camera.aspect = width / height;
+      camera.fov = fovForAspect(camera.aspect);
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
     }
     window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
 
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
       geometry.dispose();
       edges.dispose();
       shards.forEach((s) => s.mesh.material.dispose());
