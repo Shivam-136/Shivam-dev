@@ -4,8 +4,7 @@ export default function CursorAura() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    // Pointless on touch devices — there's no cursor to follow, and it
-    // would just burn battery/GPU rendering an animation nobody sees move.
+
     if (window.matchMedia("(hover: none)").matches) return;
 
     const canvas = canvasRef.current;

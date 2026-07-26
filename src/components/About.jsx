@@ -12,9 +12,7 @@ export default function About() {
       <div ref={ref} className="max-w-4xl mx-auto">
         <div className="flex items-start justify-between gap-6 mb-4">
           <p className="eyebrow">ABOUT</p>
-          {/* one quiet 3D touch per section, not a wall of them — this is
-              the only voxel accent on this section, sized small and tucked
-              at the edge so it reads as texture, not a centerpiece */}
+         
           <MiniVoxel3D className="w-14 h-14 shrink-0 opacity-90" top="#5EEAD4" side="#2b8f80" spin="slow" />
         </div>
 

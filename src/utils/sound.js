@@ -1,8 +1,3 @@
-// src/utils/sound.js
-// Shared, app-wide sound engine + mute state.
-// No external audio file needed — the "click" is synthesized with Web Audio API.
-// Sound defaults to OFF (muted) until the user explicitly turns it on,
-// so first-time visitors in quiet/professional settings aren't surprised.
 
 const STORAGE_KEY = "mc-sound-muted";
 let audioCtx = null;
@@ -52,12 +47,11 @@ export function playBlockClick() {
 
   try {
     const ctx = getAudioCtx();
-    if (!ctx) return; // unsupported browser — fail silently
-
+    if (!ctx) return; 
     if (ctx.state === "suspended") ctx.resume();
 
     const now = ctx.currentTime;
-    const freqs = [880, 660]; // two quick layered blips = classic UI "click" pop
+    const freqs = [880, 660]; 
 
     freqs.forEach((freq, i) => {
       const osc = ctx.createOscillator();
@@ -76,6 +70,5 @@ export function playBlockClick() {
       osc.stop(now + i * 0.015 + 0.1);
     });
   } catch (e) {
-    // audio blocked/unsupported — fail silently
   }
 } 

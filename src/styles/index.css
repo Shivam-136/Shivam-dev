@@ -54,7 +54,6 @@ h4 {
   }
 }
 
-/* ---------- Signature: Chunk-load reveal (voxel column wipe) ---------- */
 .chunk-reveal {
   clip-path: polygon(0 100%, 10% 100%, 10% 0, 20% 0, 20% 100%,
       30% 100%, 30% 0, 40% 0, 40% 100%,
@@ -68,12 +67,6 @@ h4 {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-/* =====================================================================
-   MINECRAFT GUI PANEL SYSTEM
-   Real Minecraft inventory panels: flat stone-grey fill, a light bevel
-   on the top/left edge, a dark bevel on the bottom/right edge, and a
-   hard 2px black outline. No blur, no soft glow — everything is crisp.
-   ===================================================================== */
 .glass {
   position: relative;
   background: #1b2117;
@@ -114,9 +107,6 @@ h4 {
   pointer-events: none;
 }
 
-/* rounded-* utilities get overridden to blocky corners wherever the
-   panel system is used, so Tailwind's rounded-2xl/3xl on .glass elements
-   still reads as Minecraft, not iOS */
 .glass.rounded-xl,
 .glass.rounded-2xl,
 .glass.rounded-3xl {
@@ -128,12 +118,7 @@ h4 {
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
 }
 
-/* =====================================================================
-   MINECRAFT BUTTON
-   Classic beveled GUI button: light top/left inset, dark bottom/right
-   inset, brightens (not lifts) on hover, and visibly presses in —
-   inverted bevel — on click.
-   ===================================================================== */
+
 .mc-btn {
   position: relative;
   border-radius: 2px;

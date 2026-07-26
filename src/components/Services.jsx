@@ -7,7 +7,7 @@ export default function Services() {
   const gridRef = useSlideReveal();
 
   return (
-    <section id="services" className="py-28 px-6 bg-obsidian-panel/40">
+    <section id="services" className="py-28 px-6 bg-obsidian-panel/60">
       <div ref={ref} className="max-w-6xl mx-auto">
         <p className="eyebrow mb-4">SERVICES</p>
         <h2 className="text-xl md:text-3xl font-semibold text-bone leading-relaxed mb-14 tracking-tight">
@@ -19,6 +19,7 @@ export default function Services() {
             <div
               key={s.title}
               data-slide-item
+              data-slide-dir={i % 4 < 2 ? "left" : "right"}
               data-cursor-hover
               className="group glass pixel-border rounded-2xl p-6 hover:shadow-emerald transition-all hover:-translate-y-1"
             >

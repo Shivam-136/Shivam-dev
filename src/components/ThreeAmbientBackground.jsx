@@ -1,18 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-/**
- * Sitewide ambient Three.js layer: a sparse field of tiny voxel shards
- * drifting slowly behind every section. This is the ONE global 3D touch
- * that ties the whole portfolio together — kept deliberately quiet
- * (low opacity, slow motion, no lighting drama) so it reads as
- * atmosphere, not decoration competing with the content.
- *
- * Mount ONCE near the root, e.g. in App.jsx:
- *   <ThreeAmbientBackground />
- * Render it before <main> so it sits behind all page content
- * (it's `fixed` + `pointer-events-none`, so it never blocks clicks).
- */
 export default function ThreeAmbientBackground() {
   const mountRef = useRef(null);
 
@@ -28,12 +16,6 @@ export default function ThreeAmbientBackground() {
     let width = window.innerWidth;
     let height = window.innerHeight;
 
-    // A fixed vertical FOV (like the old `45`) only shows a decent
-    // horizontal slice on wide desktop screens — on a narrow portrait
-    // phone, the horizontal FOV shrinks a lot and most shards (spread
-    // across x) fall outside the frustum entirely. Instead, derive the
-    // vertical FOV from the aspect so the *horizontal* field of view
-    // stays roughly constant across desktop and mobile.
     const TARGET_HORIZONTAL_FOV_DEG = 62;
     function fovForAspect(aspect) {
       const hRad = THREE.MathUtils.degToRad(TARGET_HORIZONTAL_FOV_DEG);
@@ -50,16 +32,11 @@ export default function ThreeAmbientBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
     mount.appendChild(renderer.domElement);
 
-    // Fewer, slightly smaller shards on small/low-power screens so
-    // mobile stays smooth — visibility comes from the FOV fix above,
-    // not from throwing more geometry at it.
     const isSmallScreen = width < 640;
 
     const PALETTE = [0x34d399, 0x5eead4, 0xffffff, 0x5d8a3a];
     const COUNT = isSmallScreen ? 36 : 60;
 
-    // Bigger + additive-blended so the glow reads through the section
-    // panels' translucent backgrounds instead of disappearing behind them.
     const geometry = new THREE.BoxGeometry(0.6, 0.6, 0.6);
     const edges = new THREE.EdgesGeometry(geometry);
 

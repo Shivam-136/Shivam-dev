@@ -46,11 +46,7 @@ export default function App() {
   return (
     <>
       {loading && <LoginScreen onDone={() => setLoading(false)} />}
-
-      {/* Sitewide, quiet — sits behind every section. Everything else
-          (main, Navbar, Footer) needs `relative z-10` (or higher) so it
-          stacks above this, which is already true for this codebase's
-          .glass / section backgrounds. */}
+        
       <ThreeAmbientBackground />
 
       <CustomCursor />
