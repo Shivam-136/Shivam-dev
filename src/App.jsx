@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LoginScreen from "./components/LoginScreen";
 import CustomCursor from "./components/CustomCursor";
 import CursorAura from "./components/CursorAura";
+import ThreeAmbientBackground from "./components/ThreeAmbientBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -46,6 +47,12 @@ export default function App() {
     <>
       {loading && <LoginScreen onDone={() => setLoading(false)} />}
 
+      {/* Sitewide, quiet — sits behind every section. Everything else
+          (main, Navbar, Footer) needs `relative z-10` (or higher) so it
+          stacks above this, which is already true for this codebase's
+          .glass / section backgrounds. */}
+      <ThreeAmbientBackground />
+
       <CustomCursor />
       <CursorAura />
 
@@ -55,7 +62,7 @@ export default function App() {
 
       <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
 
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <Skills />
@@ -66,7 +73,7 @@ export default function App() {
         <Contact />
       </main>
 
-      <Footer />
+      <Footer className="relative z-10" />
     </>
   );
 }

@@ -1,15 +1,23 @@
 import useChunkReveal from "../hooks/useChunkReveal";
 import useSlideReveal from "../hooks/useSlideReveal";
 import { profile } from "../data/profile";
+import MiniVoxel3D from "./MiniVoxel3D";
 
 export default function About() {
   const ref = useChunkReveal();
   const cardsRef = useSlideReveal();
 
   return (
-    <section id="about" className="relative py-28 px-6 bg-obsidian">
+    <section id="about" className="relative py-28 px-6 bg-obsidian/95">
       <div ref={ref} className="max-w-4xl mx-auto">
-        <p className="eyebrow mb-4">ABOUT</p>
+        <div className="flex items-start justify-between gap-6 mb-4">
+          <p className="eyebrow">ABOUT</p>
+          {/* one quiet 3D touch per section, not a wall of them — this is
+              the only voxel accent on this section, sized small and tucked
+              at the edge so it reads as texture, not a centerpiece */}
+          <MiniVoxel3D className="w-14 h-14 shrink-0 opacity-90" top="#5EEAD4" side="#2b8f80" spin="slow" />
+        </div>
+
         <h2 className="text-xl md:text-3xl font-semibold text-bone leading-relaxed mb-8 tracking-tight">
           The developer behind the world
         </h2>

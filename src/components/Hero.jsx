@@ -84,7 +84,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-obsidian"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-obsidian/90"
     >
       {/* crisp pixel grid background */}
       <div

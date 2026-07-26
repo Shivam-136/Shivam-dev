@@ -8,7 +8,7 @@ export default function Projects() {
   const ref = useChunkReveal();
 
   return (
-    <section id="projects" className="py-28 px-6 bg-obsidian">
+    <section id="projects" className="py-28 px-6 bg-obsidian/90">
       <div ref={ref} className="max-w-6xl mx-auto">
         <p className="eyebrow mb-4">FEATURED PROJECTS</p>
         <h2 className="text-xl md:text-3xl font-semibold text-bone leading-relaxed mb-14 tracking-tight">

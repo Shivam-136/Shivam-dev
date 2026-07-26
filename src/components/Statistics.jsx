@@ -34,7 +34,7 @@ export default function Statistics() {
   }, []);
 
   return (
-    <section className="py-28 px-6 bg-obsidian">
+    <section className="py-28 px-6 bg-obsidian/90">
       <div ref={ref} className="max-w-5xl mx-auto">
         <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {stats.map((s, i) => (
