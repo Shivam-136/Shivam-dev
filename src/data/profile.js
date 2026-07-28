@@ -28,13 +28,6 @@ export const featuredProject = {
   repo: "https://github.com/Shivam-136",
 };
 
-// Multiple projects for the Projects grid. featuredProject above stays as-is
-// (used for the big hero card); add more real projects here so the section
-// shows a range of work instead of just one. Replace the two placeholder
-// entries with your own projects — fill in name, description, features,
-// tech, live link and repo link. Delete a placeholder entirely if you
-// don't have a second/third project ready yet; the grid adapts to however
-// many entries are in this array.
 export const projects = [
   featuredProject,
   {

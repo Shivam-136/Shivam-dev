@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import LoginScreen from "./components/LoginScreen";
 import CustomCursor from "./components/CustomCursor";
 import CursorAura from "./components/CursorAura";
 import ThreeAmbientBackground from "./components/ThreeAmbientBackground";
@@ -23,7 +22,6 @@ import useSmoothScroll from "./hooks/useSmoothScroll";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   useSmoothScroll();
@@ -39,14 +37,8 @@ export default function App() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = loading ? "hidden" : "auto";
-  }, [loading]);
-
   return (
     <>
-      {loading && <LoginScreen onDone={() => setLoading(false)} />}
-        
       <ThreeAmbientBackground />
 
       <CustomCursor />

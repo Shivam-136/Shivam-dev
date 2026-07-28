@@ -134,4 +134,4 @@ function ProjectCard({ project, index }) {
       </div>
     </div>
   );
-}
+} 
