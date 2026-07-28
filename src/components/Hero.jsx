@@ -145,13 +145,13 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <button
             type="button"
-            onClick={() => downloadResume(profile.resumeUrl, "Shivam_Chhanchhan_Resume.pdf")}
+            onClick={() => downloadResume(profile.resumeUrl, "shivam_resume_full_stack_developer.pdf")}
             data-cursor-hover
             className="hero-cta mc-btn flex items-center gap-2 bg-emerald-glow text-obsidian font-medium px-6 py-3"
           >
             <FiDownload /> Download Resume
           </button>
-          
+
           <a
             href="#projects"
             onClick={(e) => {
@@ -163,7 +163,7 @@ export default function Hero() {
           >
             View Projects <FiArrowRight />
           </a>
-          
+
           <a
             href="#contact"
             onClick={(e) => {
