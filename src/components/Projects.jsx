@@ -2,10 +2,12 @@ import { useRef } from "react";
 import gsap from "gsap";
 import useChunkReveal from "../hooks/useChunkReveal";
 import { projects } from "../data/profile";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiPlusSquare } from "react-icons/fi";
 
 export default function Projects() {
   const ref = useChunkReveal();
+
+  const liveProjects = projects.filter((p) => !p.isPlaceholder);
 
   return (
     <section id="projects" className="py-28 px-6 bg-obsidian/90">
@@ -16,9 +18,13 @@ export default function Projects() {
         </h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project, i) => (
+          {liveProjects.map((project, i) => (
             <ProjectCard key={project.name} project={project} index={i} />
           ))}
+
+          {/* Placeholder slot rendered as an honest "more coming" card
+              instead of hiding it or showing fake content. */}
+          <ComingSoonCard index={liveProjects.length} />
         </div>
       </div>
     </section>
@@ -35,8 +41,8 @@ function ProjectCard({ project, index }) {
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     gsap.to(card, {
-      rotateY: x * 6,
-      rotateX: -y * 6,
+      rotateY: x * 4,
+      rotateX: -y * 4,
       duration: 0.4,
       ease: "power2.out",
       transformPerspective: 900,
@@ -56,39 +62,25 @@ function ProjectCard({ project, index }) {
       onMouseLeave={handleLeave}
       data-cursor-hover
       data-chunk-item
-      className="glass pixel-border rounded-2xl p-4 md:p-5 shadow-panel [transform-style:preserve-3d] flex flex-col"
+      className="glass pixel-border rounded-2xl p-5 shadow-panel [transform-style:preserve-3d] flex flex-col"
     >
-      <p className="eyebrow !text-emerald-glow/60 mb-2 !text-[9px]">{String(index + 1).padStart(2, "0")}</p>
-
-      <div
-        style={{ transform: "translateZ(30px)" }}
-        className="aspect-[16/9] rounded-xl bg-gradient-to-br from-obsidian-alt to-obsidian-panel border border-obsidian-line flex items-center justify-center overflow-hidden relative mb-4"
-      >
-        <div className="absolute inset-0 bg-grid-glow bg-[size:24px_24px] opacity-30" />
-        <p className="relative eyebrow text-diamond/70 text-center px-3 !text-[9px]">{project.name}</p>
+      <div style={{ transform: "translateZ(20px)" }} className="flex items-center gap-2 mb-3">
+        <span className="eyebrow !text-emerald-glow/60 !text-[9px] shrink-0">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="h-px flex-1 bg-obsidian-line" />
       </div>
 
       <div style={{ transform: "translateZ(20px)" }} className="flex-1 flex flex-col">
         <h3 className="font-display text-base text-bone font-semibold mb-2">{project.name}</h3>
 
-        <p className="text-bone-dim leading-relaxed font-body mb-3 text-xs line-clamp-3">
+        <p className="text-bone-dim leading-relaxed font-body mb-3 text-xs line-clamp-2">
           {project.description}
         </p>
 
-        {project.features?.length > 0 && (
-          <ul className="grid grid-cols-2 gap-1.5 mb-3">
-            {project.features.slice(0, 4).map((f) => (
-              <li key={f} className="text-xs text-bone flex items-center gap-1.5 font-body truncate">
-                <span className="w-1 h-1 rounded-[1px] bg-diamond shrink-0" />
-                {f}
-              </li>
-            ))}
-          </ul>
-        )}
-
         {project.tech?.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.tech.slice(0, 4).map((t) => (
+            {project.tech.slice(0, 5).map((t) => (
               <span
                 key={t}
                 className="text-[10px] text-emerald-glow border border-emerald-glow/30 rounded-full px-2 py-0.5 font-body"
@@ -134,4 +126,26 @@ function ProjectCard({ project, index }) {
       </div>
     </div>
   );
-} 
+}
+
+// Honest "more on the way" slot — dashed border, muted tone, no fake
+// project name/description. Reads as intentional, not unfinished.
+function ComingSoonCard({ index }) {
+  return (
+    <div
+      className="rounded-2xl p-5 flex flex-col items-center justify-center text-center min-h-[200px] border-2 border-dashed border-obsidian-line bg-obsidian-alt/20"
+      style={{ borderRadius: "3px" }}
+    >
+      <FiPlusSquare size={22} className="text-bone-dim/50 mb-3" />
+      <p className="eyebrow !text-bone-dim/50 !text-[9px] mb-2">
+        {String(index + 1).padStart(2, "0")}
+      </p>
+      <p className="text-bone-dim/70 text-sm font-body font-medium mb-1">
+        New project incoming
+      </p>
+      <p className="text-bone-dim/40 text-xs font-body">
+        Currently building something worth showing.
+      </p>
+    </div>
+  );
+}
