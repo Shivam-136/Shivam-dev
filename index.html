@@ -1,31 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shivam — Full-Stack Developer</title>
+    
+    <title>Shivam Chhanchhan — Full Stack Developer</title>
     <meta
       name="description"
-      content="Shivam Chhanchhan is a Full Stack Developer crafting modern web experiences with React, Node.js, MongoDB and AI-powered applications."
+      content="Full Stack Developer building modern web apps with React, Node.js, MongoDB and AI."
     />
+    <meta name="author" content="Shivam Chhanchhan" />
     <meta name="theme-color" content="#0A0D0B" />
+    <link rel="canonical" href="https://dev-by-shivam.vercel.app" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dev-by-shivam.vercel.app" />
     <meta property="og:title" content="Shivam Chhanchhan — Full Stack Developer" />
     <meta
       property="og:description"
-      content="Crafting Modern Web Experiences with MERN Stack & AI."
+      content="Full Stack Developer building modern web apps with React, Node.js, MongoDB and AI."
     />
-    <meta property="og:image" content="/og-image.png" />
-    <meta property="og:url" content="https://shivamchhanchhan.dev" />
+    <meta property="og:image" content="https://dev-by-shivam.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Shivam Chhanchhan Portfolio" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://dev-by-shivam.vercel.app" />
     <meta name="twitter:title" content="Shivam Chhanchhan — Full Stack Developer" />
-    <meta name="twitter:description" content="Crafting Modern Web Experiences with FULL Stack & AI." />
+    <meta
+      name="twitter:description"
+      content="Full Stack Developer building modern web apps with React, Node.js, MongoDB and AI."
+    />
+    <meta name="twitter:image" content="https://dev-by-shivam.vercel.app/og-image.png" />
 
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,19 +48,40 @@
       rel="stylesheet"
     />
 
+    <!-- JSON-LD Structured Data for Crawlers -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Shivam Chhanchhan",
         "jobTitle": "Full Stack Developer",
-        "url": "https://shivamchhanchhan.dev",
-        "sameAs": ["https://github.com/Shivam-136"]
+        "description": "Full Stack Developer building modern web apps with React, Node.js, MongoDB and AI.",
+        "url": "https://dev-by-shivam.vercel.app",
+        "image": "https://dev-by-shivam.vercel.app/og-image.png",
+        "sameAs": [
+          "https://github.com/Shivam-136",
+          "https://www.linkedin.com/in/shivam-chhanchhan",
+          "https://www.instagram.com/shivamk._13/"
+        ],
+        "knowsAbout": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "JavaScript",
+          "TypeScript",
+          "Tailwind CSS",
+          "GSAP",
+          "REST APIs",
+          "AI Integration"
+        ]
       }
     </script>
   </head>
-  <body>
+  <body class="bg-[#0A0D0B] text-[#ECF3EC]">
+    <!-- Prerendered crawler markup is auto-injected here at build time from src/data/profile.js -->
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

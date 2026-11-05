@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141713"/>
+      <stop offset="100%" stop-color="#0B0D0A"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg3)"/>
+
+  <!-- Border & Grid -->
+  <rect x="40" y="30" width="720" height="390" rx="12" fill="#12160F" stroke="#9BAA9C" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <rect x="40" y="30" width="720" height="40" rx="12" fill="#171C13"/>
+  <circle cx="65" cy="50" r="5" fill="#EF4444" opacity="0.4"/>
+  <circle cx="82" cy="50" r="5" fill="#F59E0B" opacity="0.4"/>
+  <circle cx="99" cy="50" r="5" fill="#10B981" opacity="0.4"/>
+  <text x="400" y="55" fill="#9BAA9C" font-family="system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">upcoming-project.preview</text>
+
+  <!-- Plus Icon / Blueprint Graphic -->
+  <circle cx="400" cy="200" r="45" fill="#182017" stroke="#34D399" stroke-opacity="0.4" stroke-width="2"/>
+  <line x1="400" y1="180" x2="400" y2="220" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+  <line x1="380" y1="200" x2="420" y2="200" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Text -->
+  <text x="400" y="280" fill="#ECF3EC" font-family="system-ui, sans-serif" font-size="18" font-weight="600" text-anchor="middle">[ADD PROJECT SCREENSHOT]</text>
+  <text x="400" y="310" fill="#9BAA9C" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">Drop screenshot in /public/projects/project3.webp or link image URL</text>
+</svg>

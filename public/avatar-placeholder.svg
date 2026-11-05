@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18221A"/>
+      <stop offset="100%" stop-color="#0E1410"/>
+    </linearGradient>
+    <radialGradient id="avatarGlow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="16" fill="url(#avatarBg)"/>
+  <circle cx="200" cy="160" r="140" fill="url(#avatarGlow)"/>
+
+  <!-- Border -->
+  <rect x="8" y="8" width="384" height="384" rx="12" fill="none" stroke="#34D399" stroke-opacity="0.35" stroke-width="2"/>
+  
+  <!-- Subtle pixel grid accents at corners -->
+  <rect x="16" y="16" width="12" height="12" fill="#34D399" opacity="0.6"/>
+  <rect x="372" y="16" width="12" height="12" fill="#34D399" opacity="0.6"/>
+  <rect x="16" y="372" width="12" height="12" fill="#34D399" opacity="0.6"/>
+  <rect x="372" y="372" width="12" height="12" fill="#34D399" opacity="0.6"/>
+
+  <!-- Developer Silhouette / Avatar Icon -->
+  <!-- Head -->
+  <circle cx="200" cy="155" r="50" fill="#203328" stroke="#34D399" stroke-width="2.5"/>
+  <!-- Glasses / Developer Accent -->
+  <rect x="175" y="145" width="20" height="12" rx="2" fill="none" stroke="#5EEAD4" stroke-width="2"/>
+  <rect x="205" y="145" width="20" height="12" rx="2" fill="none" stroke="#5EEAD4" stroke-width="2"/>
+  <line x1="195" y1="151" x2="205" y2="151" stroke="#5EEAD4" stroke-width="2"/>
+
+  <!-- Torso / Shoulders -->
+  <path d="M120 280 C 120 225, 280 225, 280 280 Z" fill="#203328" stroke="#34D399" stroke-width="2.5"/>
+
+  <!-- Label -->
+  <rect x="110" y="315" width="180" height="32" rx="6" fill="#121814" stroke="#34D399" stroke-opacity="0.4"/>
+  <text x="200" y="336" fill="#34D399" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">[ADD YOUR PHOTO]</text>
+</svg>

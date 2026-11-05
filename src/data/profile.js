@@ -1,110 +1,224 @@
-export const profile = {
-  name: "Shivam Chhanchhan",
-  role: "Full Stack Developer",
-  tagline: "Crafting Modern Web Experiences with FULL Stack & AI.",
-  about:
-    "I am a passionate Full Stack Developer specializing in React.js, Redux Toolkit, Tailwind CSS, GSAP, Node.js, Express.js, MongoDB, REST APIs, Authentication Systems, and AI-powered applications. I love building scalable web applications with beautiful UI, smooth animations, secure backend architecture, and excellent user experience.",
-  github: "https://github.com/Shivam-136",
-  githubUsername: "Shivam-136",
-  email: "shivam243028@gmail.com",
-  linkedin: "https://www.linkedin.com/in/shivam-chhanchaan-029665362",
-  instagram: "https://www.instagram.com/shivamk._13/",
-  resumeUrl: "/resume.pdf", // drop your resume file into /public as resume.pdf
-};
+import { SITE_CONFIG } from "../config/site";
 
-export const featuredProject = {
-  name: "Nexa AI Voice Assistant",
-  description:
-    "An AI-powered voice assistant with real-time speech recognition, natural text-to-speech responses, and conversational AI — wrapped in a secure, authenticated, fully responsive interface.",
-  features: [
-    "Speech Recognition",
-    "Text To Speech",
-    "AI Chat",
-    "Google Authentication",
-    "Responsive UI",
+/**
+ * Flag to show or hide cards/sections with [ADD ...] placeholders.
+ * Set to false for production deployments so nothing unfinished renders.
+ * Set to true when you want to view placeholder reminders while editing.
+ */
+export const showPlaceholders = false;
+
+// Check if resume.pdf is available for download
+export const resumeAvailable = true;
+
+const rawProfile = {
+  name: SITE_CONFIG.name,
+  role: SITE_CONFIG.role,
+  tagline:
+    "I build high-performance, full-stack web applications and AI-powered tools for modern startups and teams.",
+  aboutLines: [
+    "I am a Full Stack Developer specializing in the MERN stack (MongoDB, Express.js, React, Node.js) with a passion for clean UI engineering and robust backend systems.",
+    "I engineer web applications end-to-end — from database modeling and secure RESTful API architecture to responsive, accessible client interfaces.",
+    "Driven by modern technology, I also integrate real-time AI and speech recognition models into practical user-facing applications.",
+    "My focus is on writing maintainable code that scales, delivers measurable impact, and respects the end user's attention.",
   ],
-  tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "GSAP"],
-  live: "https://nexa-voice-assistant-by-shivam.vercel.app/",
-  repo: "https://github.com/Shivam-136",
+  photoUrl: "/avatar-placeholder.webp", // Replace with /photo.jpg or your headshot
+  github: SITE_CONFIG.github,
+  githubUsername: SITE_CONFIG.githubUsername,
+  email: SITE_CONFIG.email,
+  linkedin: SITE_CONFIG.linkedin,
+  instagram: SITE_CONFIG.instagram,
+  resumeUrl: SITE_CONFIG.resumeUrl,
 };
 
-export const projects = [
-  featuredProject,
+const rawProjects = [
   {
-    name: "Soundscapes",
-    description:
-      "A landing page for an ambient audio mixing and streaming platform — lets people build immersive soundscapes from rooms, scenes, and a soundboard, then stream them live to an audience or co-host with friends.",
-    features: [
-      "Room & Scene builder",
-      "Live audio streaming",
-      "Interactive soundboard",
-      "Community sharing",
-    ],
-    tech: ["HTML5", "CSS3", "JavaScript"],
+    id: "nexa",
+    title: "Nexa AI Voice Assistant",
+    problemStatement:
+      "Traditional web applications lack hands-free accessibility and natural conversational voice feedback.",
+    role: "Full Stack Developer",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "GSAP"],
+    keyResult: showPlaceholders
+      ? "Engineered real-time speech recognition with conversational AI responses and secure authentication [ADD REAL RESULT HERE: e.g. tested with 200+ speech queries, sub-1.2s round-trip response]."
+      : "Engineered real-time speech recognition with conversational AI responses, secure JWT authentication, and interactive audio visualization.",
+    live: "https://nexa-voice-assistant-by-shivam.vercel.app/",
+    repo: "https://github.com/Shivam-136",
+    screenshot: "/projects/nexa.webp",
+    featured: true,
+  },
+  {
+    id: "soundscapes",
+    title: "Soundscapes Audio Platform",
+    problemStatement:
+      "Creators and remote workers need a lightweight, responsive audio studio to mix ambient rooms and stream custom audio live.",
+    role: "Frontend Engineer",
+    tech: ["HTML5", "CSS3", "JavaScript", "Web Audio API"],
+    keyResult: showPlaceholders
+      ? "Engineered an interactive soundboard and room mixer with zero-dependency low-latency audio playback [ADD REAL RESULT HERE: e.g. sub-50ms playback latency across 12 simultaneous audio tracks]."
+      : "Engineered an interactive soundboard and multi-channel room mixer with zero-dependency low-latency audio playback.",
     live: "https://soundscape-landing-page-navy.vercel.app/",
     repo: "https://github.com/Shivam-136/soundscape-landing-page",
+    screenshot: "/projects/soundscapes.webp",
+    featured: true,
   },
-  // ⚠️ Placeholder — marked isPlaceholder so it's hidden from the live
-  // Projects section until you replace it with a real project. Fill in
-  // the real details below, then delete the `isPlaceholder: true` line
-  // (or just delete this whole object if you don't have a third yet).
   {
-    isPlaceholder: true,
-    name: "Add your third project",
-    description:
-      "Replace this with a real project description — what it does, what problem it solves, and what makes it worth looking at.",
-    features: ["Feature one", "Feature two", "Feature three"],
-    tech: ["React", "Node.js"],
+    id: "project-three",
+    title: "[ADD PROJECT 3 TITLE: e.g., DevTask SaaS / Full Stack MERN App]",
+    problemStatement:
+      "[ADD ONE-LINE PROBLEM STATEMENT: e.g., Developers and teams struggle to manage sprint tasks across distributed workspaces.]",
+    role: "Full Stack Developer",
+    tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+    keyResult:
+      "[ADD REAL RESULT HERE: e.g., Built end-to-end CRUD with JWT auth, reducing task update sync latency by 40%].",
     live: "",
-    repo: "",
+    repo: "https://github.com/Shivam-136",
+    screenshot: "/projects/placeholder.webp",
+    isPlaceholder: true,
   },
 ];
 
-export const skills = {
-  frontend: [
-    "HTML5", "CSS3", "JavaScript", "TypeScript", "React",
-    "Redux Toolkit", "Context API", "Tailwind CSS", "GSAP", "Vite",
-  ],
-  backend: [
-    "Node.js", "Express.js", "MongoDB", "REST API", "JWT",
-    "Google Authentication", "OAuth 2.0", "Role Based Auth",
-    "Protected Routes", "CRUD",
-  ],
-  tools: ["Git", "GitHub", "VS Code", "Postman", "npm", "Figma", "Vercel"],
-};
-
-export const services = [
-  { title: "Frontend Development", desc: "Fast, accessible, pixel-precise interfaces built with React and Tailwind CSS." },
-  { title: "Backend Development", desc: "Scalable Node.js and Express services with clean, maintainable architecture." },
-  { title: "REST API Development", desc: "Well-documented, versioned APIs designed for real client consumption." },
-  { title: "Authentication Systems", desc: "JWT, OAuth 2.0, Google login, and role-based protected routes done securely." },
-  { title: "Responsive Websites", desc: "Interfaces that hold up from a 320px phone to an ultrawide monitor." },
-  { title: "Database Design", desc: "MongoDB schemas modeled around how your app actually queries data." },
-  { title: "Performance Optimization", desc: "Code splitting, lazy loading, and Lighthouse-driven tuning." },
-  { title: "Deployment", desc: "CI-friendly deploys to Vercel with environment-safe configuration." },
+export const skillCategories = [
+  {
+    title: "Frontend",
+    categoryKey: "frontend",
+    skills: [
+      "React",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "Context API",
+      "HTML5",
+      "CSS3",
+      "GSAP",
+      "Vite",
+    ],
+  },
+  {
+    title: "Backend",
+    categoryKey: "backend",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "RESTful APIs",
+      "JWT Authentication",
+      "OAuth 2.0 / Google Auth",
+      "Protected Routes & RBAC",
+      "CRUD Architecture",
+    ],
+  },
+  {
+    title: "Database",
+    categoryKey: "database",
+    skills: [
+      "MongoDB",
+      "Mongoose ODM",
+      "Database Schema Design",
+      "Query Optimization",
+      "Data Indexing",
+    ],
+  },
+  {
+    title: "Tools / DevOps",
+    categoryKey: "tools",
+    skills: [
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Postman",
+      "VS Code",
+      "npm",
+      "Figma",
+      "Performance Tuning",
+    ],
+  },
+  {
+    title: "AI & Voice",
+    categoryKey: "ai",
+    skills: [
+      "Speech Recognition API",
+      "Text-to-Speech (TTS)",
+      "LLM / Conversational AI",
+      "Prompt Engineering",
+      "AI Interface Design",
+    ],
+  },
 ];
 
-export const timeline = [
-  { phase: "Frontend Journey", detail: "Started with HTML, CSS and JavaScript fundamentals, then moved into React, component architecture, and state management with Redux Toolkit." },
-  { phase: "Backend Journey", detail: "Learned Node.js and Express, built REST APIs, and connected them to MongoDB with proper schema design." },
-  { phase: "Authentication", detail: "Implemented JWT-based auth, Google OAuth 2.0, and role-based protected routes across full-stack projects." },
-  { phase: "AI Projects", detail: "Built Nexa, an AI voice assistant combining speech recognition, text-to-speech, and conversational AI in a production-ready MERN app." },
-  { phase: "Deployment", detail: "Shipped full-stack applications to Vercel, learning environment configuration and production debugging along the way." },
-  { phase: "Future Goals", detail: "Deepen system design skills, ship more AI-integrated products, and contribute to larger-scale MERN codebases." },
+export const allSkillsList = skillCategories.flatMap((c) => c.skills);
+
+const rawExperienceEducation = [
+  {
+    period: "2024 — Present",
+    type: "Experience & Projects",
+    title: "Full Stack & AI Application Development",
+    subtitle: "Independent & Open Source Development",
+    details:
+      "Architected full-stack applications with React, Node.js, Express, and MongoDB. Built and deployed Nexa AI Voice Assistant integrating speech recognition, text-to-speech, and responsive interfaces to Vercel.",
+    highlights: [
+      "Full MERN stack implementation with secure authentication",
+      "Real-time voice & speech recognition integration",
+      "Production-ready deployment & performance tuning",
+    ],
+  },
+  {
+    period: "2023 — 2024",
+    type: "Journey Milestone",
+    title: "Backend Engineering & API Design",
+    subtitle: "Node.js, Express, MongoDB & Authentication Systems",
+    details:
+      "Deep-dived into backend architecture, building scalable RESTful APIs, implementing JWT auth, Google OAuth 2.0, role-based access control, and robust database schemas.",
+    highlights: [
+      "Designed CRUD endpoints and relational document schemas",
+      "Secure credential handling and protected route middleware",
+      "API testing and documentation with Postman",
+    ],
+  },
+  {
+    period: "[ADD YOUR GRADUATION YEAR: e.g., 2021 — 2025]",
+    type: "Education",
+    title: "[ADD DEGREE: e.g., Bachelor of Technology / Computer Science]",
+    subtitle: "[ADD INSTITUTION / UNIVERSITY NAME HERE]",
+    details:
+      "[ADD DETAILS: e.g., Relevant Coursework: Data Structures & Algorithms, Database Management Systems, Computer Networks, Operating Systems, Web Technologies.]",
+    highlights: [
+      "[ADD GPA OR KEY ACADEMIC HIGHLIGHT HERE]",
+      "Strong foundation in core computer science principles and software engineering",
+    ],
+    isPlaceholder: true,
+  },
 ];
 
 export const stats = [
-  { value: 20, suffix: "+", label: "Technologies" },
-  { value: 15, suffix: "+", label: "Projects" },
-  { value: 1000, suffix: "+", label: "Coding Hours" },
-  { value: 2, suffix: "+", label: "Years Learning" },
+  { value: 20, suffix: "+", label: "Technologies Mastered" },
+  { value: 15, suffix: "+", label: "Projects Completed" },
+  { value: 1000, suffix: "+", label: "Hours of Code" },
+  { value: 2, suffix: "+", label: "Years Experience & Learning" },
 ];
 
 export const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
-  { label: "Timeline", href: "#timeline" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
+
+function hasPlaceholder(str) {
+  return typeof str === "string" && str.includes("[ADD ");
+}
+
+// Exported filtered data honoring showPlaceholders
+export const profile = rawProfile;
+
+export const projects = showPlaceholders
+  ? rawProjects
+  : rawProjects.filter(
+      (p) => !p.isPlaceholder && !hasPlaceholder(p.title) && !hasPlaceholder(p.problemStatement)
+    );
+
+export const experienceEducation = showPlaceholders
+  ? rawExperienceEducation
+  : rawExperienceEducation.filter(
+      (e) => !e.isPlaceholder && !hasPlaceholder(e.title) && !hasPlaceholder(e.period)
+    );

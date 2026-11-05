@@ -19,14 +19,15 @@ import {
   SiVercel,
 } from "react-icons/si";
 
-import { FaCode } from "react-icons/fa";
-import { MdSecurity } from "react-icons/md";
+import { FaCode, FaRobot, FaMicrophone, FaDatabase } from "react-icons/fa";
+import { MdSecurity, MdSpeed } from "react-icons/md";
 import { TbBrandOauth } from "react-icons/tb";
 
 export const techIcons = {
   HTML5: { icon: SiHtml5, color: "#E34F26" },
   CSS3: { icon: SiCss, color: "#1572B6" },
   JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+  "JavaScript (ES6+)": { icon: SiJavascript, color: "#F7DF1E" },
   TypeScript: { icon: SiTypescript, color: "#3178C6" },
   React: { icon: SiReact, color: "#61DAFB" },
   "Redux Toolkit": { icon: SiRedux, color: "#764ABC" },
@@ -37,13 +38,22 @@ export const techIcons = {
   "Node.js": { icon: SiNodedotjs, color: "#5FA04E" },
   "Express.js": { icon: SiExpress, color: "#ffffff" },
   MongoDB: { icon: SiMongodb, color: "#47A248" },
+  "Mongoose ODM": { icon: SiMongodb, color: "#E34F26" },
   "REST API": { icon: SiExpress, color: "#ffffff" },
+  "RESTful APIs": { icon: SiExpress, color: "#ffffff" },
   JWT: { icon: MdSecurity, color: "#FB015B" },
+  "JWT Authentication": { icon: MdSecurity, color: "#FB015B" },
   "Google Authentication": { icon: SiGoogle, color: "#4285F4" },
   "OAuth 2.0": { icon: TbBrandOauth, color: "#4285F4" },
+  "OAuth 2.0 / Google Auth": { icon: TbBrandOauth, color: "#4285F4" },
   "Role Based Auth": { icon: MdSecurity, color: "#FB015B" },
   "Protected Routes": { icon: MdSecurity, color: "#61DAFB" },
+  "Protected Routes & RBAC": { icon: MdSecurity, color: "#61DAFB" },
   CRUD: { icon: SiMongodb, color: "#47A248" },
+  "CRUD Architecture": { icon: SiMongodb, color: "#47A248" },
+  "Database Schema Design": { icon: FaDatabase, color: "#5EEAD4" },
+  "Query Optimization": { icon: MdSpeed, color: "#34D399" },
+  "Data Indexing": { icon: FaDatabase, color: "#38BDF8" },
   Git: { icon: SiGit, color: "#F05032" },
   GitHub: { icon: SiGithub, color: "#ffffff" },
   "VS Code": { icon: FaCode, color: "#007ACC" },
@@ -51,4 +61,12 @@ export const techIcons = {
   npm: { icon: SiNpm, color: "#CB3837" },
   Figma: { icon: SiFigma, color: "#F24E1E" },
   Vercel: { icon: SiVercel, color: "#ffffff" },
+  "Performance Tuning": { icon: MdSpeed, color: "#34D399" },
+  "Speech Recognition API": { icon: FaMicrophone, color: "#5EEAD4" },
+  "Text-to-Speech (TTS)": { icon: FaMicrophone, color: "#38BDF8" },
+  "LLM / Conversational AI": { icon: FaRobot, color: "#10A37F" },
+  "Prompt Engineering": { icon: FaRobot, color: "#34D399" },
+  "AI Interface Design": { icon: FaRobot, color: "#A7F3EE" },
 };
+
+export const defaultTechIcon = { icon: FaCode, color: "#34D399" };

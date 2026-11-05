@@ -69,6 +69,7 @@ export function playBlockClick() {
       osc.start(now + i * 0.015);
       osc.stop(now + i * 0.015 + 0.1);
     });
-  } catch (e) {
+  } catch {
+    // AudioContext blocked or unsupported, silently ignore
   }
 } 
