@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg_sf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1614"/>
+      <stop offset="100%" stop-color="#070C0A"/>
+    </linearGradient>
+    <radialGradient id="glow_sf" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#06B6D4" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#080C0A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stroke_glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <filter id="shadow_toolbar" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg_sf)"/>
+  <circle cx="400" cy="210" r="320" fill="url(#glow_sf)"/>
+
+  <!-- Canvas dot grid -->
+  <g fill="#ECF3EC" fill-opacity="0.08">
+    <circle cx="100" cy="110" r="1.5"/><circle cx="140" cy="110" r="1.5"/><circle cx="180" cy="110" r="1.5"/><circle cx="220" cy="110" r="1.5"/><circle cx="260" cy="110" r="1.5"/><circle cx="300" cy="110" r="1.5"/><circle cx="340" cy="110" r="1.5"/><circle cx="380" cy="110" r="1.5"/><circle cx="420" cy="110" r="1.5"/><circle cx="460" cy="110" r="1.5"/><circle cx="500" cy="110" r="1.5"/><circle cx="540" cy="110" r="1.5"/><circle cx="580" cy="110" r="1.5"/><circle cx="620" cy="110" r="1.5"/><circle cx="660" cy="110" r="1.5"/><circle cx="700" cy="110" r="1.5"/>
+    <circle cx="100" cy="150" r="1.5"/><circle cx="140" cy="150" r="1.5"/><circle cx="180" cy="150" r="1.5"/><circle cx="220" cy="150" r="1.5"/><circle cx="260" cy="150" r="1.5"/><circle cx="300" cy="150" r="1.5"/><circle cx="340" cy="150" r="1.5"/><circle cx="380" cy="150" r="1.5"/><circle cx="420" cy="150" r="1.5"/><circle cx="460" cy="150" r="1.5"/><circle cx="500" cy="150" r="1.5"/><circle cx="540" cy="150" r="1.5"/><circle cx="580" cy="150" r="1.5"/><circle cx="620" cy="150" r="1.5"/><circle cx="660" cy="150" r="1.5"/><circle cx="700" cy="150" r="1.5"/>
+    <circle cx="100" cy="190" r="1.5"/><circle cx="140" cy="190" r="1.5"/><circle cx="180" cy="190" r="1.5"/><circle cx="220" cy="190" r="1.5"/><circle cx="260" cy="190" r="1.5"/><circle cx="300" cy="190" r="1.5"/><circle cx="340" cy="190" r="1.5"/><circle cx="380" cy="190" r="1.5"/><circle cx="420" cy="190" r="1.5"/><circle cx="460" cy="190" r="1.5"/><circle cx="500" cy="190" r="1.5"/><circle cx="540" cy="190" r="1.5"/><circle cx="580" cy="190" r="1.5"/><circle cx="620" cy="190" r="1.5"/><circle cx="660" cy="190" r="1.5"/><circle cx="700" cy="190" r="1.5"/>
+    <circle cx="100" cy="230" r="1.5"/><circle cx="140" cy="230" r="1.5"/><circle cx="180" cy="230" r="1.5"/><circle cx="220" cy="230" r="1.5"/><circle cx="260" cy="230" r="1.5"/><circle cx="300" cy="230" r="1.5"/><circle cx="340" cy="230" r="1.5"/><circle cx="380" cy="230" r="1.5"/><circle cx="420" cy="230" r="1.5"/><circle cx="460" cy="230" r="1.5"/><circle cx="500" cy="230" r="1.5"/><circle cx="540" cy="230" r="1.5"/><circle cx="580" cy="230" r="1.5"/><circle cx="620" cy="230" r="1.5"/><circle cx="660" cy="230" r="1.5"/><circle cx="700" cy="230" r="1.5"/>
+    <circle cx="100" cy="270" r="1.5"/><circle cx="140" cy="270" r="1.5"/><circle cx="180" cy="270" r="1.5"/><circle cx="220" cy="270" r="1.5"/><circle cx="260" cy="270" r="1.5"/><circle cx="300" cy="270" r="1.5"/><circle cx="340" cy="270" r="1.5"/><circle cx="380" cy="270" r="1.5"/><circle cx="420" cy="270" r="1.5"/><circle cx="460" cy="270" r="1.5"/><circle cx="500" cy="270" r="1.5"/><circle cx="540" cy="270" r="1.5"/><circle cx="580" cy="270" r="1.5"/><circle cx="620" cy="270" r="1.5"/><circle cx="660" cy="270" r="1.5"/><circle cx="700" cy="270" r="1.5"/>
+  </g>
+
+  <!-- Window Container -->
+  <rect x="40" y="30" width="720" height="390" rx="12" fill="#121815" stroke="#34D399" stroke-opacity="0.25" stroke-width="1.5"/>
+  <rect x="40" y="30" width="720" height="40" rx="12" fill="#16221C"/>
+  <circle cx="65" cy="50" r="5" fill="#EF4444" opacity="0.8"/>
+  <circle cx="82" cy="50" r="5" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="99" cy="50" r="5" fill="#10B981" opacity="0.8"/>
+  <text x="400" y="55" fill="#9BAA9C" font-family="system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">sketchflow-by-shivam.vercel.app</text>
+
+  <!-- Interactive Floating Toolbar -->
+  <g filter="url(#shadow_toolbar)">
+    <rect x="250" y="85" width="300" height="38" rx="8" fill="#1B2822" stroke="#34D399" stroke-opacity="0.3" stroke-width="1"/>
+    
+    <!-- Select Tool (Active) -->
+    <rect x="258" y="90" width="28" height="28" rx="5" fill="#34D399" fill-opacity="0.18"/>
+    <!-- Cursor Icon -->
+    <path d="M266 96 L277 104 L272 105 L275 111 L273 112 L270 106 L266 110 Z" fill="#34D399"/>
+    
+    <!-- Pencil Tool -->
+    <path d="M299 109 L308 100 L311 103 L302 112 L297 113 Z" fill="none" stroke="#9BAA9C" stroke-width="1.6" stroke-linejoin="round"/>
+    
+    <!-- Rectangle Tool -->
+    <rect x="328" y="98" width="14" height="12" rx="2" fill="none" stroke="#9BAA9C" stroke-width="1.6"/>
+    
+    <!-- Circle Tool -->
+    <circle cx="365" cy="104" r="7" fill="none" stroke="#9BAA9C" stroke-width="1.6"/>
+    
+    <!-- Text Tool -->
+    <text x="395" y="111" fill="#9BAA9C" font-family="system-ui, sans-serif" font-size="14" font-weight="700">T</text>
+    
+    <!-- Separator -->
+    <line x1="416" y1="94" x2="416" y2="114" stroke="#2D4338" stroke-width="1"/>
+    
+    <!-- Color Swatches -->
+    <circle cx="434" cy="104" r="5" fill="#34D399" stroke="#ECF3EC" stroke-width="1.2"/>
+    <circle cx="452" cy="104" r="5" fill="#38BDF8"/>
+    <circle cx="470" cy="104" r="5" fill="#F59E0B"/>
+    <circle cx="488" cy="104" r="5" fill="#EC4899"/>
+    
+    <!-- Undo / Redo -->
+    <path d="M515 101 L510 104 L515 107 M511 104 Q519 100 523 107" fill="none" stroke="#9BAA9C" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M537 101 L542 104 L537 107 M541 104 Q533 100 529 107" fill="none" stroke="#9BAA9C" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Canvas Drawings & Flow Graphics -->
+  <!-- Connected Diagram Node 1 -->
+  <rect x="150" y="165" width="115" height="55" rx="8" fill="#182720" stroke="#34D399" stroke-width="1.5"/>
+  <text x="207" y="193" fill="#ECF3EC" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Idea Sketch</text>
+  <text x="207" y="208" fill="#5EEAD4" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Canvas Layer</text>
+
+  <!-- Flow Arrow -->
+  <path d="M265 192 C300 192, 310 175, 345 175" fill="none" stroke="#34D399" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="345,171 353,175 345,179" fill="#34D399"/>
+
+  <!-- Connected Diagram Node 2 -->
+  <rect x="355" y="145" width="130" height="55" rx="8" fill="#182720" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="420" y="173" fill="#ECF3EC" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Live Sync Engine</text>
+  <text x="420" y="188" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Real-time Stream</text>
+
+  <!-- Second Flow Arrow -->
+  <path d="M485 172 C520 172, 530 200, 560 200" fill="none" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="560,196 568,200 560,204" fill="#38BDF8"/>
+
+  <!-- Connected Diagram Node 3 -->
+  <rect x="570" y="175" width="115" height="55" rx="8" fill="#182720" stroke="#A78BFA" stroke-width="1.5"/>
+  <text x="627" y="203" fill="#ECF3EC" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Collaboration</text>
+  <text x="627" y="218" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Multi-user Room</text>
+
+  <!-- Artistic Dynamic Curve Drawing -->
+  <path d="M180 255 C240 220, 310 270, 390 235 C470 200, 520 260, 610 240" fill="none" stroke="url(#stroke_glow)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Collaborator Cursor 1: Shivam -->
+  <g transform="translate(385, 225)">
+    <path d="M0 0 L14 11 L7 12 L10 19 L7 20 L4 13 L0 16 Z" fill="#34D399" stroke="#0E1614" stroke-width="1"/>
+    <rect x="14" y="8" width="58" height="18" rx="4" fill="#34D399"/>
+    <text x="43" y="21" fill="#0E1614" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Shivam</text>
+  </g>
+
+  <!-- Collaborator Cursor 2: Team Member -->
+  <g transform="translate(565, 150)">
+    <path d="M0 0 L14 11 L7 12 L10 19 L7 20 L4 13 L0 16 Z" fill="#38BDF8" stroke="#0E1614" stroke-width="1"/>
+    <rect x="14" y="8" width="70" height="18" rx="4" fill="#38BDF8"/>
+    <text x="49" y="21" fill="#0E1614" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Collaborator</text>
+  </g>
+
+  <!-- Title & Status -->
+  <text x="400" y="320" fill="#ECF3EC" font-family="system-ui, sans-serif" font-size="20" font-weight="700" text-anchor="middle">SketchFlow</text>
+  <text x="400" y="346" fill="#9BAA9C" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">Drawing &amp; Collaboration Platform</text>
+
+  <!-- Badges -->
+  <rect x="205" y="372" width="65" height="22" rx="4" fill="#1A2720" stroke="#34D399" stroke-opacity="0.3"/>
+  <text x="237" y="387" fill="#34D399" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">REACT</text>
+
+  <rect x="280" y="372" width="105" height="22" rx="4" fill="#1A2720" stroke="#34D399" stroke-opacity="0.3"/>
+  <text x="332" y="387" fill="#34D399" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">CANVAS API</text>
+
+  <rect x="395" y="372" width="75" height="22" rx="4" fill="#1A2720" stroke="#34D399" stroke-opacity="0.3"/>
+  <text x="432" y="387" fill="#34D399" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">NODE.JS</text>
+
+  <rect x="480" y="372" width="105" height="22" rx="4" fill="#1A2720" stroke="#38BDF8" stroke-opacity="0.3"/>
+  <text x="532" y="387" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">WEBSOCKETS</text>
+</svg>

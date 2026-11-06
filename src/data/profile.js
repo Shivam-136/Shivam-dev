@@ -62,8 +62,22 @@ const rawProjects = [
     featured: true,
   },
   {
-    id: "project-three",
-    title: "[ADD PROJECT 3 TITLE: e.g., DevTask SaaS / Full Stack MERN App]",
+    id: "sketchflow",
+    title: "SketchFlow",
+    problemStatement:
+      "Modern teams and creators need an intuitive digital workspace for real-time visual collaboration, ideation, and flexible freehand drawing.",
+    role: "Full Stack Developer",
+    tech: ["React", "HTML5 Canvas", "Node.js", "Express", "Tailwind CSS", "WebSockets"],
+    keyResult:
+      "Engineered an interactive digital canvas with smooth stroke rendering, responsive drawing tools, and real-time collaboration features.",
+    live: "https://sketchflow-by-shivam.vercel.app/",
+    repo: "",
+    screenshot: "/projects/sketchflow.webp",
+    featured: true,
+  },
+  {
+    id: "project-four",
+    title: "[ADD PROJECT 4 TITLE: e.g., DevTask SaaS / Full Stack MERN App]",
     problemStatement:
       "[ADD ONE-LINE PROBLEM STATEMENT: e.g., Developers and teams struggle to manage sprint tasks across distributed workspaces.]",
     role: "Full Stack Developer",

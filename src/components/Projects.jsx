@@ -169,11 +169,11 @@ function ProjectCard({ project, index }) {
               <FiGithub size={14} />
               <span>GitHub</span>
             </a>
-          ) : (
+          ) : isPlaceholder ? (
             <span className="py-2 px-3 text-xs text-bone-dim/50 border border-dashed border-obsidian-line rounded">
               Repo
             </span>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
